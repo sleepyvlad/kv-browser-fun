@@ -8,14 +8,16 @@ import styles from "./LittleMan.module.scss";
 
 interface LittleManProps {
   className?: string;
+  headColor?: string;
+  bodyColor?: string;
 }
 
 const LittleMan = (props: LittleManProps): React.ReactElement => {
-  const { className } = props;
+  const { className, bodyColor = "black", headColor = "black" } = props;
   return (
     <div className={cn(styles.littleMan, className)}>
-      <ReactSVG src={HeadIcon} />
-      <ReactSVG src={BodyIcon} />
+      <ReactSVG src={HeadIcon} className={styles.innerWrapper} style={{ stroke: headColor }} />
+      <ReactSVG src={BodyIcon} className={styles.innerWrapper} style={{ stroke: bodyColor }} />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import cn from "clsx";
 import Title from "../../components/Title/Title";
 import Button from "../../components/Button";
 import LittleMan from "../../components/LittleMan";
@@ -22,8 +23,15 @@ const Home = (props: HomeProps): React.ReactElement => {
       <Title as="h1" className={styles.title}>
         Browser Fun
       </Title>
-      <Button onClick={handleOpenMenu}>menu</Button>
-      <Menu opened={false} levelsCompleted={levelsCompleted} />
+      <Button
+        className={cn(
+          menuOpened ? styles.menuButtonDissapeared : styles.menuButton,
+        )}
+        onClick={handleOpenMenu}
+      >
+        menu
+      </Button>
+      <Menu openMenu={setMenuOpened} opened={menuOpened} levelsCompleted={levelsCompleted} />
       <LittleMan className={styles.littleMan} />
     </div>
   );

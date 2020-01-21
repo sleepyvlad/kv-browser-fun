@@ -1,5 +1,86 @@
 .container-closed {
+  border: 0;
+  position: absolute;
+  top: 275px;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: close-window 1s ease-in forwards;
+}
+
+.container-opened {
   width: 0;
   height: 0;
+  border-radius: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: open-window 1s ease-in 1s forwards;
+}
+
+@keyframes open-window {
+  from {
+    overflow: hidden;
+    opacity: 0;
+    transform: rotate(-1080deg) scale(0);
+    margin-bottom: 200px;
+  }
+  to {
+    height: 300px;
+    width: 300px;
+    opacity: 1;
+    border: 4px solid black;
+  }
+}
+
+@keyframes close-window {
+  from {
+    overflow: hidden;
+    opacity: 1;
+    transform: scale(1) rotate(1080deg);
+    height: 300px;
+    width: 300px;
+    border: 4px solid black;
+  }
+  to {
+    height: 0;
+    border-radius: 100%;
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+}
+
+.buttons {
+  font-family: var(--font-default);
+  background: 0;
+  border: 3px dashed black;
+  border-left: 0;
+  border-right: 0;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 20px;
+
+  &:last-of-type {
+    margin: 0;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.level-link {
+  border: 2px ridge black;
+}
+
+.levels-window-opened {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.levels-window-closed {
+  display: none;
 }
